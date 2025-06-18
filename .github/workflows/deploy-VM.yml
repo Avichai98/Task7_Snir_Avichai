@@ -15,12 +15,12 @@ jobs:
 
       - name: Write SSH key
         run: |
-          echo "${{ secrets.VM_SSH_KEY }}" > key.pem
+          echo "${{ secrets.AZURE_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
       - name: Sync files to Azure VM
         run: |
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.VM_HOST }} "mkdir -p /home/snir1551/week7practice"
-          rsync -az --delete --exclude='.git' --exclude='node_modules' -e "ssh -i key.pem -o StrictHostKeyChecking=no" ./week7_practice/ ${{ secrets.VM_HOST }}:/home/snir1551/week7practice/
+          rsync -az --delete --exclude='.git' --exclude='node_modules' -e "ssh -i key.pem -o StrictHostKeyChecking=no" ./ ${{ secrets.VM_HOST }}:/home/snir1551/week7practice/
       - name: Deploy with Docker Compose
         run: |
           ssh -i key.pem -o StrictHostKeyChecking=no ${{ secrets.VM_HOST }} "
