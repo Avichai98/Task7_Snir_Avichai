@@ -46,7 +46,7 @@ jobs:
       - name: Run docker-compose up remotely
         run: |
           ssh -p ${{ secrets.REMOTE_PORT }} -i ~/.ssh/id_rsa ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }} \
-            "cd /home/${{ secrets.AZURE_USER }}/app && sudo docker compose up -d"
+            "cd /home/${{ secrets.AZURE_USER }}/app && sudo docker-compose up -d"
         shell: bash
 
       - name: Collect docker-compose logs remotely
