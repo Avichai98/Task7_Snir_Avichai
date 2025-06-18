@@ -18,13 +18,8 @@ jobs:
 
   deploy:
     uses: ./.github/workflows/deploy-VM.yml
-    secrets:
-      AZURE_PRIVATE_KEY: ${{ secrets.AZURE_PRIVATE_KEY }}
-      AZURE_USER: ${{ secrets.AZURE_USER }}
-      AZURE_HOST: ${{ secrets.AZURE_HOST }}
-      REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-
-
+    secrets: inherit
+      
   backend-notify:
     needs: [backend-test]
     if: always()

@@ -28,11 +28,6 @@ jobs:
           ssh-keyscan -p ${{ secrets.REMOTE_PORT }} ${{ secrets.AZURE_HOST }} >> ~/.ssh/known_hosts
         shell: bash
 
-      - name: Rsync files to Azure VM
-        run: |
-          rsync -avz -e "ssh -p ${{ secrets.REMOTE_PORT }} -i ~/.ssh/id_rsa" ./ ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }}:/home/${{ secrets.AZURE_USER }}/app/
-        shell: bash
-
       - name: Create .env file
         run: |
           echo "PORT=3001" >> .env
@@ -42,6 +37,11 @@ jobs:
           echo "MONGO_DB=testdb" >> .env
           echo "MONGO_INITDB_ROOT_USERNAME=admin" >> .env
           echo "MONGO_INITDB_ROOT_PASSWORD=admin123" >> .env
+
+      - name: Rsync files to Azure VM
+        run: |
+          rsync -avz -e "ssh -p ${{ secrets.REMOTE_PORT }} -i ~/.ssh/id_rsa" ./ ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }}:/home/${{ secrets.AZURE_USER }}/app/
+        shell: bash
 
       - name: Run docker-compose up remotely
         run: |
