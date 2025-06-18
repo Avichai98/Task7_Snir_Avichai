@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const API_BASE_URL = 'http://localhost:8080'; // this is local
-//const API_BASE_URL = `http://20.217.201.167:8080`; // this is azure vm
+// const API_BASE_URL = 'http://localhost:8080'; // this is local
+const API_BASE_URL = `http://20.217.201.167:8080`; // this is azure vm
 
 type User = {
   _id: string;
