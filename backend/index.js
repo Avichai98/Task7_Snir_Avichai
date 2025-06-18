@@ -6,18 +6,12 @@ import cors from 'cors';
 
 const app = express();
 
-
-const beforeEnv = { ...process.env };
-
-
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 
 
-const loadedFromEnvFile = Object.hasOwn(beforeEnv, 'PORT') === false;
 
-console.log(`PORT loaded from ${loadedFromEnvFile ? '.env file' : 'Dockerfile ENV'}`);
 
 const mongoUri = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}?authSource=admin`;
 
@@ -42,7 +36,7 @@ app.post('/api/users', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello from Backend');
+  res.send('Hello from Backend!!!');
 });
 
 

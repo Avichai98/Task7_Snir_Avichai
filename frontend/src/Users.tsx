@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-//const API_BASE_URL = 'http://localhost:3001'; // this is local
-const API_BASE_URL = `http://20.217.201.167:3001`; // this is azure vm
+const API_BASE_URL = 'http://localhost:3001'; // this is local
+//const API_BASE_URL = `http://20.217.201.167:3001`; // this is azure vm
 
 type User = {
   _id: string;
@@ -41,14 +41,14 @@ export default function Users() {
       <h2 style={{ textAlign: 'center' }}>Register</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <input
-          placeholder="שם"
+          placeholder="name"
           value={name}
           onChange={e => setName(e.target.value)}
           required
           style={{ padding: 8, borderRadius: 6, border: '1px solid #ccc' }}
         />
         <input
-          placeholder="אימייל"
+          placeholder="email"
           type="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
