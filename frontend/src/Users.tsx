@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const API_BASE_URL = 'http://localhost:3001'; // this is local
-//const API_BASE_URL = `http://20.217.201.167:3001`; // this is azure vm
+const API_BASE_URL = 'http://localhost:8080'; // this is local
+//const API_BASE_URL = `http://20.217.201.167:8080`; // this is azure vm
 
 type User = {
   _id: string;
@@ -16,7 +16,7 @@ export default function Users() {
   const [email, setEmail] = useState('');
 
   const fetchUsers = async () => {
-    const res = await fetch('${API_BASE_URL}/api/users');
+    const res = await fetch(`${API_BASE_URL}/api/users`);
     setUsers(await res.json());
   };
 
@@ -26,7 +26,7 @@ export default function Users() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch('${API_BASE_URL}/api/users', {
+    await fetch(`${API_BASE_URL}/api/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email }),
