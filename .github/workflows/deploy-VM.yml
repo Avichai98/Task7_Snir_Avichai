@@ -53,7 +53,7 @@ jobs:
       - name: Collect docker-compose logs remotely
         run: |
           ssh -p ${{ secrets.REMOTE_PORT }} -i ~/.ssh/id_rsa ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }} \
-            "cd /home/${{ secrets.AZURE_USER }}/app && sudo docker compose logs" > ./deploy-to-azure-vm.txt
+            "cd /home/${{ secrets.AZURE_USER }}/app && sudo docker-compose logs" > ./deploy-to-azure-vm.txt
         shell: bash
         continue-on-error: true
 
