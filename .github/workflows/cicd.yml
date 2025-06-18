@@ -10,7 +10,6 @@ on:
   workflow_dispatch: # Can be run manually
 
 jobs:
-
   backend-test:
     uses: ./.github/workflows/backend-test.yml
 
