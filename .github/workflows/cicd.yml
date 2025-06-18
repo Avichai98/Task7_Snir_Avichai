@@ -15,7 +15,18 @@ jobs:
 
   frontend-test:
     uses: ./.github/workflows/frontend-test.yml
-
+  
+  debug-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Secrets
+        run: |
+          echo "AZURE_PRIVATE_KEY: ${{ secrets.AZURE_PRIVATE_KEY }}"
+          echo "AZURE_USER: ${{ secrets.AZURE_USER }}"
+          echo "AZURE_HOST: ${{ secrets.AZURE_HOST }}"
+          echo "REMOTE_PORT: ${{ secrets.REMOTE_PORT }}"
+        shell: bash
+        
   deploy:
     uses: ./.github/workflows/deploy-VM.yml
     secrets: 
