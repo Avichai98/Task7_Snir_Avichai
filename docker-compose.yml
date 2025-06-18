@@ -1,19 +1,19 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
     build: ./backend
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./backend:/app
+    #   - /app/node_modules
     env_file:
       - .env
     depends_on:
       - mongo
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001"]
+      test: ["CMD", "curl", "-f", "http://localhost:${BACKEND_PORT}"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -25,13 +25,12 @@ services:
     build: ./frontend
     ports:
       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./frontend:/app
     depends_on:
       - backend
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      test: ["CMD", "curl", "-f", "http://localhost:${FRONTEND_PORT}"]
       interval: 20s
       timeout: 5s
       retries: 5
@@ -53,6 +52,7 @@ services:
 
 volumes:
   mongo-data:
+
 
 networks:
   appnet:
