@@ -46,7 +46,7 @@ jobs:
 
       - name: Serve frontend for testing
         run: |
-          node server.js &
+          npm start &
           sleep 3
           curl -I http://localhost:3000
         working-directory: frontend
