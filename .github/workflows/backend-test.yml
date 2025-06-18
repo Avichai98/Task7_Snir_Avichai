@@ -13,28 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20]
+        node-version: [18, 20, 22]
     outputs:
       job_start_time: ${{ steps.set_time.outputs.job_start_time }}
     steps:
       - uses: actions/checkout@v3
       - id: set_time
         run: echo "job_start_time=$(date +%s)" >> $GITHUB_OUTPUT
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }} # Use the Node.js version from the matrix
-          cache: 'npm'
+          cache: "npm"
           cache-dependency-path: backend/package-lock.json
 
       - name: Install backend dependencies
-        run: |
-          if [ "${{ matrix.node-version }}" < "18" ] ; then
-            npm install
-          else
-            npm ci
-          fi
+        run: npm ci
+
         working-directory: backend
 
       - name: Install ESLint
