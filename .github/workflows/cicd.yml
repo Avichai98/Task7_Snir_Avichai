@@ -20,7 +20,7 @@ jobs:
 
 
   backend-notify:
-    needs: [backend-test, backend-docker-build]
+    needs: [backend-test]
     if: always()
     uses: ./.github/workflows/notify-backend.yml
     with:
@@ -30,7 +30,7 @@ jobs:
     secrets: inherit
 
   frontend-notify:
-    needs: [frontend-test, frontend-docker-build]
+    needs: [frontend-test]
     if: always()
     uses: ./.github/workflows/notify-frontend.yml
     with:
