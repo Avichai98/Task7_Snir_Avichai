@@ -12,6 +12,7 @@ on:
       #  required: true
       #REMOTE_PORT:
       #  required: true
+  workflow_dispatch:
 
 jobs:
   deploy:
