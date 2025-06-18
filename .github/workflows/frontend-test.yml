@@ -48,5 +48,5 @@ jobs:
         run: |
           node server.js &
           sleep 3
-          curl -I http://localhost:4000
+          curl -I http://localhost:3000
         working-directory: frontend
