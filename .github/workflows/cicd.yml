@@ -2,7 +2,9 @@ name: ManageUsers CICD
 
 on:
   push: # Runs on every push
-      tags:
+    branches:
+      - master
+    tags:
       - 'v*.*.*'
   pull_request: # Runs on pull request
   workflow_dispatch: # Can be run manually
