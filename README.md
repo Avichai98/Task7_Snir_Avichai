@@ -15,7 +15,7 @@ This project demonstrates a full-stack application deployed via Docker Compose t
 
 ## 1. Architecture Diagram
 
-![Architecture Diagram](image.png)
+![Architecture Diagram](diagram.jpg)
 
 **Key elements shown:**
 
@@ -339,7 +339,8 @@ After starting the app, you can check that the containers are running correctly 
 ```bash
 sudo docker ps
 ```
-![Docker PS](image.png)
+
+![Docker Pt](images/dockerps.png)
 
 ---
 
