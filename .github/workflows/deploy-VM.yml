@@ -3,15 +3,6 @@ name: Deploy App to Azure VM
 
 on:
   workflow_call:
-   # secrets:
-    #  AZURE_PRIVATE_KEY:
-     #   required: true
-      #AZURE_USER:
-       # required: true
-      #AZURE_HOST:
-      #  required: true
-      #REMOTE_PORT:
-      #  required: true
   workflow_dispatch:
 
 jobs:
