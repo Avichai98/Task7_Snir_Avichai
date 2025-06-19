@@ -15,7 +15,7 @@ This project demonstrates a full-stack application deployed via Docker Compose t
 
 ## 1. Architecture Diagram
 
-![Architecture Diagram](diagram.jpg)
+![Architecture Diagram](images/diagram.jpg)
 
 **Key elements shown:**
 
